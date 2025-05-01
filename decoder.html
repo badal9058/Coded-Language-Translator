@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Text ↔ Code Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+    textarea, button {
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      width: 90%;
+      max-width: 500px;
+    }
+    button.copy-btn {
+      margin-left: 5px;
+      padding: 6px 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .result-box {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+      word-wrap: break-word;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Letter ↔ Code Converter</h1>
+
+  <!-- Encoder -->
+  <h2>🔤 Encode (Text to Number Code)</h2>
+  <textarea id="textInput" rows="2" placeholder="Enter text (e.g. badal arya)"></textarea><br>
+  <button onclick="encode()">Encode</button>
+  <div class="result-box" id="encodedResult"></div>
+  <button class="copy-btn" onclick="copyText('encodedResult')">Copy Encoded</button>
+
+  <!-- Decoder -->
+  <h2>🔢 Decode (Number Code to Text)</h2>
+  <textarea id="codeInput" rows="2" placeholder="Enter code (e.g. 2-1-4-1-12--1-18-25-1)"></textarea><br>
+  <button onclick="decode()">Decode</button>
+  <div class="result-box" id="decodedResult"></div>
+  <button class="copy-btn" onclick="copyText('decodedResult')">Copy Decoded</button>
+
+  <footer>
+    <p>Created by Great Man</p>
+  </footer>
+
+  <script>
+    function encode() {
+      const input = document.getElementById("textInput").value.toLowerCase();
+      let result = [];
+
+      for (let char of input) {
+        if (char >= 'a' && char <= 'z') {
+          result.push(char.charCodeAt(0) - 96);
+        } else if (char === ' ') {
+          result.push(''); // for space
+        }
+      }
+
+      document.getElementById("encodedResult").innerText = result.join('-');
+    }
+
+    function decode() {
+      const input = document.getElementById("codeInput").value.trim();
+      const parts = input.split('-');
+      let result = '';
+
+      for (let part of parts) {
+        if (part === '') {
+          result += ' ';
+        } else {
+          const n = parseInt(part);
+          if (!isNaN(n) && n >= 1 && n <= 26) {
+            result += String.fromCharCode(96 + n);
+          } else {
+            result += '?';
+          }
+        }
+      }
+
+      document.getElementById("decodedResult").innerText = result;
+    }
+
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      if (text) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert("Copied to clipboard!");
+        });
+      }
+    }
+  </script>
+</body>
+</html>
