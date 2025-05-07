@@ -24,6 +24,7 @@ body {
     border: 2px solid #33ff00;
     border-radius: 12px;
     box-shadow: 0 0 20px #33ff00;
+    opacity: 80%;
   }
 
   h1 {
