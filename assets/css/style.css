@@ -6,7 +6,8 @@ body {
     font-family: 'Share Tech Mono', monospace;
     background: black;
     color: #33ff00;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   canvas {
