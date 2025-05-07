@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>MCL - Modern Coded Language</title>
+</head>
+<body>
+  <canvas id="matrixCanvas"></canvas>
+  <div class="container">
+    <h1>CLT: Coded Language Translator</h1>
+
+    <label class="mode-label">Mode: <span id="mode">Encrypt</span></label>
+    <button class="btn" onclick="toggleMode()">Switch Mode</button>
+
+    <br><br><div id="codingWrapper">
+      <label>Select Coding Language:</label>
+      <br><br><select id="codingMethod">
+        <option disabled selected>Select a method</option>
+        <option value="caesar">Caesar Cipher</option>
+        <option value="a1z26">A1Z26</option>
+        <option value="patri">Patri Code</option>
+        <option value="binary">Binary</option>
+        <option value="hex">Hexadecimal</option>
+        <option value="morse">Morse Code</option>
+        <option value="reverse">Reverse Text</option>
+        <option value="base64">Base64</option>
+        <option value="leet">Leet Speak</option>
+        <option value="vigenere">Vigenère Cipher</option>
+        <option value="rot13">ROT13</option>
+      </select>
+    </div>
+
+    <textarea id="messageInput" placeholder="Enter your message or code..."></textarea>
+    <button class="btn" onclick="processMessage()">Execute</button>
+
+    <div class="output" id="outputBox">
+      <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+      <div id="resultText"></div>
+    </div>
+    <br><p style="text-align: center;">Created By- BADAL ARYA</p>
+  </div>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
